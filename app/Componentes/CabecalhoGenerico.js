@@ -1,29 +1,33 @@
-import React, {Component} from 'react';
-import {View} from 'react-native' ;
-import styles from './CabecalhoGenerico.style' ;
+import React from 'react';
+import {Text, View, TouchableHighlight} from 'react-native';
+import styles from './CabecalhoGenerico.style';
 
 type Props = {
-  esquerda: React.Node,
-  direita?: React.Node,
-  meio?: React.Node,
-  separador?: boolean,
-  style?: {},
-  centralizar?: boolean,
+  aoPressionarBotaoFechar: Function,
+  titulo: string,
+  possuiBordaInferior?: boolean,
 };
 
-export default class CabecalhoGenerico extends Component<Props> {
-  render() {
-    const {esquerda, direita, meio, separador, style, centralizar} = this.props;
+const HeaderModal = ({
+  aoPressionarBotaoFechar,
+  possuiBordaInferior,
+  titulo,
+}: Props) => {
+  const containerStyle = [
+    styles.container,
+    possuiBordaInferior && styles.bordaInferior,
+  ];
 
-    return (
-      <View style={[styles.container, separador && styles.separador, style]}>
-        {centralizar && <View style={styles.meio}>{meio}</View>}
-        <View style={styles.esquerdaContainer}>
-          {esquerda && <View style={styles.esquerda}>{esquerda}</View>}
-          {!centralizar && meio}
-        </View>
-        {direita}
+  return (
+    <View style={containerStyle}>
+      <Text style={styles.titulo}>{titulo}</Text>
+      <View style={styles.containerBotoesDireita}>
+        <TouchableHighlight onPress={() => aoPressionarBotaoFechar()}>
+          <Text>Close</Text>
+        </TouchableHighlight>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+export default HeaderModal;

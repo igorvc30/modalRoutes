@@ -1,66 +1,46 @@
 import React from 'react';
-import {Button, Image, View, Text} from 'react-native';
+import {Button} from 'react-native';
 import {createAppContainer} from 'react-navigation'; // 1.0.0-beta.27
 import {createStackNavigator} from 'react-navigation-stack';
-import CabecalhoGenerico from './CabecalhoGenerico';
-
-const OutraStack = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Details: {
-      screen: DetailsScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#000',
-      },
-      headerTintColor: '#f0f',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  },
-);
+import NadaStack from '../Nada/NadaRotas';
+import UsuarioStack from '../Usuario/UsuarioRotas';
+import ModalScreen from './ModalRodape';
+import FlutuaModal from './ModalFlutua';
+import MainScreen from './MainScreens';
 
 const MainStack = createStackNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-    },
-    Details: {
-      screen: OutraStack,
-    },
+    Principal: MainScreen,
+    Usuarios: UsuarioStack,
+    Nadas: NadaStack,
   },
   {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
+    initialRouteName: 'Principal',
+    headerMode: 'screen',
+    defaultNavigationOptions: ({navigation}) => ({
       headerStyle: {
         backgroundColor: '#f4511e',
       },
+      headerLeft: (
+        <Button
+          onPress={() => navigation.navigate('ModalRaiz')}
+          title="Info"
+          color="#04F"
+        />
+      ),
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-    },
+    }),
   },
 );
 
 const RootStack = createStackNavigator(
   {
-    Main: {
-      screen: MainStack,
-    },
-    MyModal: {
-      screen: ModalScreen,
-    },
-    MyModal2: {
-      screen: ModalScreen2,
-    },
+    Main: MainStack,
+    ModalRaiz: ModalScreen,
+    FlutuaRaiz: FlutuaModal,
   },
   {
     headerMode: 'none',
@@ -84,5 +64,6 @@ const AppContainer = createAppContainer(RootStack);
 export default class App extends React.Component {
   render() {
     return <AppContainer />;
+    // return <UsuarioStack />;
   }
 }

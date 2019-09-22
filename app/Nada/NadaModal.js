@@ -18,9 +18,9 @@ export const ModalChao = ({navigation}) => (
         justifyContent: 'center',
       }}>
       <CabecalhoGenerico
-        meio={<Text>NADA CHAO</Text>}
-        centralizar={true}
-        direita={<Button onPress={() => navigation.pop()} title="Close" />}
+        titulo="NADA CHAO"
+        aoPressionarBotaoFechar={() => navigation.pop()}
+        possuiBordaInferior
       />
       <Text style={{fontSize: 30}}>NADA DO CHAO!</Text>
       <Button
@@ -54,9 +54,9 @@ export const ModalFlutua = ({navigation}) => (
         borderWidth: 1,
       }}>
       <CabecalhoGenerico
-        meio={<Text>NADA FLUTUA</Text>}
-        centralizar={true}
-        esquerda={<Button onPress={() => navigation.pop()} title="<=" />}
+        titulo="NADA FLUTUA"
+        aoPressionarBotaoFechar={() => navigation.pop()}
+        possuiBordaInferior
       />
       <Text style={{fontSize: 30}}>This is a modal!</Text>
       <Button onPress={() => navigation.popToTop()} title="PopTop" />

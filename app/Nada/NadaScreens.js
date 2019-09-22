@@ -2,17 +2,11 @@ import React from 'react';
 import {Button, View, Text} from 'react-native';
 
 export class NadaScreen extends React.Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerTitle: 'NADA MAIN',
-      headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('NadaFlutua')}
-          title="Info"
-          color="#000"
-        />
-      ),
-    };
+  static navigationOptions = {
+    title: 'Profile',
+    header: ({state, setParams}, defaultHeader) => ({
+      ...defaultHeader,
+    }),
   };
 
   render() {
@@ -32,6 +26,17 @@ export class NadaScreen extends React.Component {
             this.props.navigation.navigate('NadaD');
           }}
         />
+        <Button
+          onPress={() => this.props.navigation.popToTop()}
+          title="PopTop"
+        />
+
+        <Button
+          title="Modal Float"
+          onPress={() => this.props.navigation.navigate('UsuarioFlutua')}
+        />
+
+        <Button onPress={() => this.props.navigation.pop()} title="POP" />
       </View>
     );
   }
@@ -55,7 +60,7 @@ export class NadaDetails extends React.Component {
         style={{
           flex: 1,
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
           backgroundColor: '#880',
         }}>
         <Text>NADA Details Screen</Text>
@@ -67,9 +72,24 @@ export class NadaDetails extends React.Component {
           title="Modal Float"
           onPress={() => this.props.navigation.navigate('NadaFlutua')}
         />
+
+        <Button
+          title="Modal Rodape"
+          onPress={() => this.props.navigation.navigate('Rodape')}
+        />
+
+        <Button
+          title="Modal DOS OUTROS USUARIOS"
+          onPress={() => this.props.navigation.navigate('RodapeU')}
+        />
         <Button
           title="Go back"
           onPress={() => this.props.navigation.goBack()}
+        />
+
+        <Button
+          title="RAIZ MODAL RAIZ"
+          onPress={() => this.props.navigation.navigate('ModalRaiz')}
         />
       </View>
     );

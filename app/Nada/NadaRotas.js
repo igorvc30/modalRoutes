@@ -3,41 +3,25 @@ import {createAppContainer} from 'react-navigation'; // 1.0.0-beta.27
 import {createStackNavigator} from 'react-navigation-stack';
 import {NadaDetails, NadaScreen} from './NadaScreens';
 import {ModalChao, ModalFlutua} from './NadaModal';
+import ModalRodape from './ModalRodape';
 
 const MainStack = createStackNavigator(
   {
-    NadaD: {
-      screen: NadaDetails,
-    },
-    NadaH: {
-      screen: NadaScreen,
-    },
+    NadaD: NadaDetails,
+    NadaH: NadaScreen,
   },
   {
     initialRouteName: 'NadaH',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
+    headerMode: 'none',
   },
 );
 
 const RootStack = createStackNavigator(
   {
-    Main: {
-      screen: MainStack,
-    },
-    NadaChao: {
-      screen: ModalChao,
-    },
-    NadaFlutua: {
-      screen: ModalFlutua,
-    },
+    Usuario: MainStack,
+    NadaChao: ModalChao,
+    NadaFlutua: ModalFlutua,
+    Rodape: ModalRodape,
   },
   {
     headerMode: 'none',
@@ -54,10 +38,5 @@ const RootStack = createStackNavigator(
   },
 );
 
-const AppContainer = createAppContainer(RootStack);
-
-export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
+export default RootStack;
+// export default createAppContainer(RootStack);
