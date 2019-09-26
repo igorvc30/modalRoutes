@@ -8,10 +8,11 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(128,128,128,0.6)',
   },
   container: {
-    backgroundColor: '#a5f',
+    backgroundColor: '#ccc',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    maxHeight: 0.93 * Dimensions.get('window').height,
-    height: '50%',
+    maxHeight: 0.85 * Dimensions.get('window').height,
+    paddingBottom: 10,
+    alignItems: 'center',
   },
 });

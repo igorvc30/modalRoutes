@@ -1,9 +1,16 @@
 import React from 'react';
-import {View, Button, Text} from 'react-native';
+import {
+  View,
+  Button,
+  Text,
+  Alert,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import CabecalhoGenerico from '../Componentes/CabecalhoGenerico';
 
 const ModalFlutua = ({navigation}) => (
-  <View
+  <TouchableWithoutFeedback
+    onPress={() => Alert.alert('Clicked')}
     style={{
       flex: 1,
       flexDirection: 'column',
@@ -35,7 +42,7 @@ const ModalFlutua = ({navigation}) => (
         onPress={() => navigation.navigate('ModalRaiz')}
       />
     </View>
-  </View>
+  </TouchableWithoutFeedback>
 );
 
 export default ModalFlutua;

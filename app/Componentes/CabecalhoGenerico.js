@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableHighlight} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from './CabecalhoGenerico.style';
 
 type Props = {
@@ -22,9 +22,9 @@ const HeaderModal = ({
     <View style={containerStyle}>
       <Text style={styles.titulo}>{titulo}</Text>
       <View style={styles.containerBotoesDireita}>
-        <TouchableHighlight onPress={() => aoPressionarBotaoFechar()}>
+        <TouchableOpacity onPress={() => aoPressionarBotaoFechar()}>
           <Text>Close</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   );
