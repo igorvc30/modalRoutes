@@ -6,10 +6,11 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "ON": "adb reverse tcp:8081 tcp:8081"
+    "ON": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:8097 tcp:8097"
   },
   "dependencies": {
     "@react-native-community/slider": "^2.0.0",
+    "@sentry/react-native": "^1.0.9",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-gesture-handler": "^1.4.1",
